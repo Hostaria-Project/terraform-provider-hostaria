@@ -1,14 +1,14 @@
 ---
 page_title: "Hostaria Provider"
 description: |-
-  Provider Terraform pour l'API Hostaria. Crée des VPS, des clés SSH et des serveurs de jeu.
+  Provider Terraform pour Hostaria. Crée des VPS, des clés SSH et des serveurs de jeu.
 ---
 
 # Hostaria Provider
 
-Provider Terraform / OpenTofu pour l'API Hostaria. Les appels partent vers `https://api.hostaria.cloud/v1/...`.
+Provider Terraform et OpenTofu pour [Hostaria](https://hostaria.cloud).
 
-La clé `api_key` est une clé `host_live_…` créée dans Compte → IaC. Elle peut aussi venir de la variable d'environnement `HOSTARIA_API_KEY`.
+La clé `api_key` est une clé `host_live_…` créée dans le [compte Hostaria](https://hostaria.cloud), section IaC. Elle peut aussi venir de `HOSTARIA_API_KEY`.
 
 ## Example Usage
 
@@ -17,7 +17,7 @@ terraform {
   required_providers {
     hostaria = {
       source  = "hostaria-project/hostaria"
-      version = "0.1.0"
+      version = "0.1.1"
     }
   }
 }
