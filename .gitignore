@@ -1,0 +1,11 @@
+/terraform-provider-hostaria
+/dist/
+.DS_Store
+**/.terraform/
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+crash.*.log
+/bin/

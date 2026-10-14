@@ -1,0 +1,9 @@
+# Copier vers terraform.tfvars (gitignoré) ou exporter :
+#   export TF_VAR_hostaria_api_key='host_live_…'
+#   export HOSTARIA_API_KEY='host_live_…'
+
+hostaria_api_key  = "host_live_REPLACE_ME"
+# offer_name      = "Starter"
+# os_slug         = "ubuntu-24-04"
+# vps_name         = "tf-smoke-01"
+# ssh_public_key  = "ssh-ed25519 AAAA… comment"
