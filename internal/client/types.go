@@ -55,6 +55,7 @@ type VM struct {
 	Name           string          `json:"name"`
 	IDVm           string          `json:"id_vm"`
 	Status         string          `json:"status"`
+	Error          string          `json:"error,omitempty"`
 	IpAddress      *string         `json:"ip_address"`
 	VmUsername     *string         `json:"vm_username"`
 	OwnerID        int64           `json:"owner_id"`

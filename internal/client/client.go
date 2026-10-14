@@ -217,6 +217,21 @@ func (c *Client) CreateVM(ctx context.Context, req CreateVMRequest) (*VM, error)
 	return c.waitVMReady(ctx, lookup)
 }
 
+func provisionFailure(vm *VM) string {
+	if vm == nil {
+		return ""
+	}
+	switch strings.ToLower(strings.TrimSpace(vm.Status)) {
+	case "error", "failed", "missing":
+		if msg := strings.TrimSpace(vm.Error); msg != "" {
+			return msg
+		}
+		return "La création du VPS a échoué. Réessayez dans quelques minutes."
+	default:
+		return ""
+	}
+}
+
 func (c *Client) waitVMReady(ctx context.Context, lookup string) (*VM, error) {
 	deadline := time.Now().Add(10 * time.Minute)
 	var last *VM
@@ -231,11 +246,12 @@ func (c *Client) waitVMReady(ctx context.Context, lookup string) (*VM, error) {
 			}
 		} else {
 			last = vm
+			if msg := provisionFailure(vm); msg != "" {
+				return vm, fmt.Errorf("%s", msg)
+			}
 			st := strings.ToLower(strings.TrimSpace(vm.Status))
 			switch st {
 			case "creating", "pending", "":
-			case "error", "failed":
-				return vm, fmt.Errorf("vps %s status=%s", lookup, vm.Status)
 			default:
 				return vm, nil
 			}
