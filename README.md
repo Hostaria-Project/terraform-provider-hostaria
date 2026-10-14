@@ -2,6 +2,25 @@
 
 Provider Terraform / OpenTofu pour l’API Hostaria. Un seul binaire, protocol v6.
 
+## Installation
+
+```hcl
+terraform {
+  required_providers {
+    hostaria = {
+      source  = "hostaria-project/hostaria"
+      version = "0.1.0"
+    }
+  }
+}
+
+provider "hostaria" {
+  # api_key = var.hostaria_api_key
+}
+```
+
+`terraform init` télécharge le provider depuis le registry public. La clé `host_live_…` se crée dans Compte → IaC. La documentation des ressources est dans [`docs/`](docs/).
+
 **URLs :** `https://api.hostaria.cloud/v1/<ressource>` — jamais `/api/v1` ni `/v1/api/v1`.
 L’`endpoint` est l’hôte (`https://api.hostaria.cloud` ou un mock `http://127.0.0.1:18080`). S’il finit déjà par `/v1`, le client ne re-préfixe pas.
 
